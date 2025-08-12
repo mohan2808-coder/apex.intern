@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>My Dynamic Blog</title>
+
+  <style>
+
+    body {
+
+      margin: 0;
+
+      font-family: Arial, sans-serif;
+
+      background: #f9f9f9;
+
+    }
+
+    header {
+
+      background: #cfe8cf;
+
+      padding: 1rem;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+    }
+
+    header h1 {
+
+      color: #764aa5;
+
+    }
+
+    nav a {
+
+      margin: 0 10px;
+
+      text-decoration: none;
+
+      color: #9da54a;
+
+      font-weight: bold;
+
+      cursor: pointer;
+
+    }
+
+    section {
+
+      padding: 2rem;
+
+    }
+
+    .card-container {
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      gap: 20px;
+
+    }
+
+    .card {
+
+      background: #ffffff;
+
+      padding: 1rem;
+
+      border-radius: 8px;
+
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+      width: 300px;
+
+    }
+
+    .card h3 {
+
+      color: #0073bf;
+
+    }
+
+    .card button {
+
+      background: #ffffff;
+
+      border: 1px solid #444;
+
+      padding: 0.5rem 1rem;
+
+      cursor: pointer;
+
+      margin-top: 10px;
+
+    }
+
+    form {
+
+      display: flex;
+
+      flex-direction: column;
+
+      max-width: 500px;
+
+    }
+
+    label {
+
+      margin-bottom: 10px;
+
+      color: rgb(0, 128, 9);
+
+      font-weight: bold;
+
+    }
+
+    input, textarea {
+
+      padding: 10px;
+
+      margin-bottom: 20px;
+
+      border: 1px solid #af7676;
+
+      border-radius: 5px;
+
+    }
+
+    button {
+
+      background-color: #af4caf;
+
+      color: white;
+
+      padding: 10px;
+
+      border: none;
+
+      border-radius: 5px;
+
+      cursor: pointer;
+
+    }
+
+    footer {
+
+      text-align: center;
+
+      padding: 1rem;
+
+      background: #ddd;
+
+      margin-top: 40px;
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+
+    <h1>Nature's Therapy</h1>
+
+    <nav>
+
+      <a href="#home">Home</a>
+
+      <a href="#posts">Posts</a>
+
+      <a href="#new">New Post</a>
+
+      <a href="#login">Login</a>
+
+      <a href="#register">Register</a>
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- Home Section -->
+
+  <section id="home">
+
+    <p>Read our latest blog posts:</p>
+
+    <div class="card-container">
+
+      <div class="card">
+
+        <h3>Forest Bathing 101: How Shinrin-Yoku Can Melt Away Stress (No Water Required!)</h3>
+
+        <p>Have you ever heard of <strong>Shinrin-Yoku</strong>? Often called "forest bathing," it's not about actual bathin...</p>
+
+        <button>Read More</button>
+
+      </div>
+
+      <div class="card">
+
+        <h3>Sleep Deeper, Live Better: How Connecting with Nature Can Improve Your Zzz's</h3>
+
+        <p>Struggling to get good sleep? Nature might be the answer. Exposure to natural light helps regulate ...</p>
+
+        <button>Read More</button>
+
+      </div>
+
+      <div class="card">
+
+        <h3>The Green Antidote: Battling Anxiety and Depression with a Dose of the Outdoors</h3>
+
+        <p>Feeling stressed or down? <strong>Nature helps.</strong> Science shows that spending time outdoors can: <br> <strong>Calm...</strong></p>
+
+        <button>Read More</button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- Posts Section -->
+
+  <section id="posts" style="display: none;">
+
+    <h2>All Blog Posts</h2>
+
+    <p>Posts list goes here...</p>
+
+  </section>
+
+
+
+  <!-- New Post Section -->
+
+  <section id="new" style="display: none;">
+
+    <h2>New Blog Post</h2>
+
+    <form>
+
+      <label for="title">Title:</label>
+
+      <input type="text" id="title" />
+
+
+
+      <label for="content">Content:</label>
+
+      <textarea id="content"></textarea>
+
+
+
+      <label for="category">Category:</label>
+
+      <input type="text" id="category" />
+
+
+
+      <button type="submit">Submit</button>
+
+    </form>
+
+  </section>
+
+
+
+  <!-- Login Section -->
+
+  <section id="login" style="display: none;">
+
+    <h2>Login</h2>
+
+    <form>
+
+      <label>Email:</label>
+
+      <input type="email" />
+
+      <label>Password:</label>
+
+      <input type="password" />
+
+      <button>Login</button>
+
+    </form>
+
+  </section>
+
+
+
+  <!-- Register Section -->
+
+  <section id="register" style="display: none;">
+
+    <h2>Register</h2>
+
+    <form>
+
+      <label>Name:</label>
+
+      <input type="text" />
+
+      <label>Email:</label>
+
+      <input type="email" />
+
+      <label>Password:</label>
+
+      <input type="password" />
+
+      <button>Register</button>
+
+    </form>
+
+  </section>
+
+
+
+  <footer>
+
+    <p>© Mohan. All rights reserved.</p>
+
+  </footer>
+
+
+
+  <!-- JS to toggle section views -->
+
+  <script>
+
+    function showSection(id) {
+
+      const sections = document.querySelectorAll("section");
+
+      sections.forEach(section => {
+
+        section.style.display = "none";
+
+      });
+
+      const selected = document.getElementById(id);
+
+      if (selected) {
+
+        selected.style.display = "block";
+
+      }
+
+    }
+
+
+
+
+    document.querySelectorAll("nav a").forEach(link => {
+
+      link.addEventListener("click", function(e) {
+
+        e.preventDefault();
+
+        const id = this.getAttribute("href").substring(1);
+
+        showSection(id);
+
+      });
+
+    });
+
+
+
+ 
+
+    window.onload = function() {
+
+      showSection("home");
+
+    };
+
+  </script>
+
+</body>
+
+</html>
