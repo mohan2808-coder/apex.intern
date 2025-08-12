@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Advanced Styling and JavaScript</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      margin: 0;
+      background-color: #f2f2f2;
+    }
+
+    header {
+      text-align: center;
+      background-color: #4d0000;
+      color: white;
+      padding: 20px 0;
+    }
+
+    section {
+      margin: 30px auto;
+      max-width: 800px;
+      padding: 20px;
+      background-color: rgb(255, 255, 255);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #00695c;
+    }
+
+    .quiz button,
+    .carousel button,
+    .joke button {
+      padding: 10px 20px;
+      margin: 10px 5px;
+      font-size: 16px;
+      border: none;
+      background-color: #6d0079;
+      color: white;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .quiz button:hover,
+    .carousel button:hover,
+    .joke button:hover {
+      background-color: #4d1e00;
+    }
+
+    #carouselImage {
+      display: block;
+      margin: 15px auto;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        background-color: #e0eff2;
+      }
+
+      section {
+        margin: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h2 {
+        font-size: 20px;
+      }
+
+      button {
+        font-size: 14px;
+      }
+
+      #carouselImage {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Advanced Styling and JavaScript</h1>
+    <p>Responsive Design | Quiz | Image Carousel | API Data</p>
+  </header>
+
+  <!-- Section 1: Responsive Design -->
+  <section>
+    <h2>Responsive Design in Action</h2>
+    <p>Resize your browser or view this page on different devices to see changes in layout and background.</p>
+  </section>
+
+  <!-- Section 2: Quiz -->
+  <section class="quiz">
+    <h2>Simple JavaScript Quiz</h2>
+    <p id="question">What is the capital of India?</p>
+    <button onclick="checkAnswer('Mumbai')">Mumbai</button>
+    <button onclick="checkAnswer('Delhi')">Delhi</button>
+    <button onclick="checkAnswer('Kolkata')">Kolkata</button>
+    <p id="quizResult"></p>
+  </section>
+
+  <!-- Section 3: Image Carousel -->
+  <section class="carousel">
+    <h2>Image Carousel</h2>
+    <img id="carouselImage" src="https://picsum.photos/400/250?random=1" alt="Carousel Image" />
+    <button onclick="nextImage()">Next Image</button>
+  </section>
+
+  <!-- Section 4: Fetch API -->
+  <section class="joke">
+    <h2>Random Joke Generator</h2>
+    <button onclick="fetchJoke()">Get a Joke</button>
+    <p id="jokeText">Click the button to get a random joke from the API.</p>
+  </section>
+
+  <script>
+    // Quiz Logic
+    function checkAnswer(answer) {
+      const correct = "Delhi";
+      const result = document.getElementById("quizResult");
+      if (answer === correct) {
+        result.textContent = "✅ Correct! Delhi is the capital of India.";
+      } else {
+        result.textContent = "❌ Incorrect. Try again!";
+      }
+    }
+
+    // Image Carousel Logic
+    const images = [
+      "https://picsum.photos/400/250?random=1",
+      "https://picsum.photos/400/250?random=2",
+      "https://picsum.photos/400/250?random=3"
+    ];
+    let currentIndex = 0;
+    function nextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      document.getElementById("carouselImage").src = images[currentIndex];
+    }
+
+    // Fetch API Joke Logic
+    async function fetchJoke() {
+      try {
+        const response = await fetch("https://official-joke-api.appspot.com/random_joke");
+        const data = await response.json();
+        document.getElementById("jokeText").textContent = ${data.setup} - ${data.punchline};
+      } catch (error) {
+        document.getElementById("jokeText").textContent = "⚠ Failed to fetch a joke.";
+      }
+    }
+  </script>
+
+</body>
+</html>
